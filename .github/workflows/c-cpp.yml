@@ -11,13 +11,13 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: configure
-      run: cmake .
+      run: |
+        sudo apt install git tree
+        cmake .
     - name: make
       run: |
         make
-        ls -l
-        ls -l tools
-        ls -l tools/linuxdeployqt
+        tree .
         zip --junk-paths linuxdeployqt tools/linuxdeployqt/linuxdeployqt
 
     - name: Create Release
